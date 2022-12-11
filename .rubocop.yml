@@ -1,0 +1,76 @@
+require:
+  - rubocop-performance
+  - rubocop-rake
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 2.7
+  NewCops: enable
+  EnabledByDefault: true
+  Exclude:
+    - bin/rake
+    - bin/rspec
+    - bin/rubocop
+
+Layout/LineLength:
+  Max: 100
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Lint/MissingSuper:
+  Enabled: false
+
+Style/AccessorGrouping:
+  EnforcedStyle: separated
+
+Style/ModuleFunction:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/NumberedParameters:
+  Enabled: false
+
+Style/Copyright:
+  Enabled: false
+
+Lint/ConstantResolution:
+  Enabled: false
+
+Style/DocumentationMethod:
+  Enabled: false
+
+Style/DisableCopsWithinSourceCodeDirective:
+  Enabled: false
+
+Style/ClassMethodsDefinitions:
+  Enabled: false
+
+Style/StringHashKeys:
+  Enabled: false
+
+Style/MethodCallWithArgsParentheses:
+  Enabled: false
+
+Style/ConstantVisibility:
+  Enabled: false
+
+Bundler/GemComment:
+  Enabled: false
+
+Layout/MultilineAssignmentLayout:
+  Enabled: false
+
+Style/CommentAnnotation:
+  RequireColon: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Style/MissingElse:
+  Enabled: false
