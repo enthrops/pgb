@@ -4,7 +4,7 @@ module PGB
   class FunctionCall < Expression
     def initialize(function, *args)
       @function = function.to_s.upcase
-      @args = args.map { to_expression(_1) }
+      @args = args.map { Expression.from(_1) }
     end
 
     def to_sql
