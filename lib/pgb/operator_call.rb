@@ -2,19 +2,19 @@
 
 module PGB
   class OperatorCall < Expression
-    # TODO Validate and parse operators https://www.postgresql.org/docs/current/functions.html
+    UNDEFINED_ARGUMENT = Object.new
 
-    def initialize(operator, expression1, expression2 = nil)
+    def initialize(operator, expression1, expression2 = UNDEFINED_ARGUMENT)
       @operator = operator.to_s
-      @expression1 = to_expression(expression1)
-      @expression2 = to_expression(expression2) if expression2
+      @expression1 = Expression.from(expression1)
+      @expression2 = Expression.from(expression2) unless expression2 == UNDEFINED_ARGUMENT
     end
 
     def to_sql
       if unary?
-        "#{operator}#{expression1}"
+        "#{operator}#{wrap(expression1)}"
       else
-        "#{expression1} #{operator} #{expression2}"
+        "#{wrap(expression1)} #{operator} #{wrap(expression2)}"
       end
     end
 
@@ -30,6 +30,16 @@ module PGB
 
     def binary?
       !unary?
+    end
+
+    def wrap(value)
+      if unary? && (value.is_a?(OperatorCall) || value.is_a?(TypeCast) || value.is_a?(Query))
+        "(#{value})"
+      elsif binary? && (value.is_a?(OperatorCall) || value.is_a?(Query))
+        "(#{value})"
+      else
+        value
+      end
     end
   end
 end
