@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 module PGB
-  class Keyword < Expression
-    SUPPORTED_VALUES = %w[TRUE FALSE NULL].freeze
+  class Keyword
+    include SQLDisplayable
+
+    SUPPORTED_VALUES = %w[AND OR NOT].freeze
 
     def initialize(value)
       if SUPPORTED_VALUES.include?(normalized(value))
@@ -21,7 +23,7 @@ module PGB
     attr_reader :value
 
     def normalized(value)
-      value.to_s.upcase
+      value.to_s.strip.upcase
     end
   end
 end
