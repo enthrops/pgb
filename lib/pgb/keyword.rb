@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module PGB
+  # TODO Is this needed?
   class Keyword
     include SQLDisplayable
 
