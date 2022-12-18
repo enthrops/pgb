@@ -4,14 +4,12 @@ module PGB
   class EvaluationContext
     include Shortcuts
 
-    # TODO Evaluate multiple args?
-    # TODO Implement respond_to_missing and remove cop skip?
     # rubocop:disable Style/MissingRespondToMissing
-    def method_missing(*args, **opts, &block)
-      if args.one?
-        Identifier.new(args.first)
+    def method_missing(method, *args, &block)
+      if args.empty?
+        Identifier.new(method)
       else
-        super
+        FunctionCall.new(method, *args)
       end
     end
     # rubocop:enable Style/MissingRespondToMissing
