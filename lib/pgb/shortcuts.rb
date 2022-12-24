@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module PGB
-  # TODO Support dynamic param evaluation
   module Shortcuts
     extend self
 
@@ -9,24 +8,34 @@ module PGB
       PGB.execute(...)
     end
 
+    def evaluate(...)
+      PGB.evaluate(...)
+    end
+
+    # TODO
     def select(...)
-      PGB::Query.new(nil, ...)
+      Query.new(nil, ...)
     end
 
-    def from(table)
-      PGB::Query.new(table)
+    # TODO
+    def from(...)
+      Query.new(...)
     end
 
-    def func(...)
-      PGB::FunctionCall.new(...)
+    def fn(...)
+      FunctionCall.new(...)
     end
 
     def lit(...)
-      PGB::Literal.new(...)
+      Literal.new(...)
     end
 
     def [](...)
-      PGB::Identifier.new(...)
+      Identifier.new(...)
+    end
+
+    def op(...)
+      OperatorCall.new(...)
     end
   end
 end

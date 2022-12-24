@@ -7,7 +7,7 @@ module PGB
       PGB.execute(self)
     end
 
-    def run
+    def execute
       to_a
     end
 
