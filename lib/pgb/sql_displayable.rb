@@ -9,5 +9,9 @@ module PGB
     def inspect
       to_sql
     end
+
+    # TODO Triggers #inspect twice
+    def pretty_print
+    end
   end
 end

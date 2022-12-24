@@ -12,6 +12,8 @@ module Kernel
   end
 end
 
+PGB.load_queries_on_inspect = true
+
 P = PGB::Shortcuts
 puts 'Shortcuts registered under P'
 

@@ -32,7 +32,10 @@ require 'zeitwerk'
 module PGB
   class << self
     attr_accessor :loader
+    attr_accessor :load_queries_on_inspect
   end
+
+  self.load_queries_on_inspect = false
 end
 
 loader = Zeitwerk::Loader.for_gem
